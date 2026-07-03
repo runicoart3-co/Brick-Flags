@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="theme-color" content="#111827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>BRICK FLAGS</title>
+
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- MENÚ -->
+<section id="menu" class="screen active">
+
+<h1 class="logo">BRICK FLAGS</h1>
+
+<button
+id="continueBtn"
+onclick="continueGame()"><span class="menu-icon">▶</span> CONTINUAR JUEGO</button>
+
+<button onclick="newGame()">
+<span class="menu-icon">🏁</span> NUEVO JUEGO
+</button>
+
+<button onclick="openFlags()">
+<span class="menu-icon">🚩</span> BANDERAS
+</button>
+
+<button onclick="openInstructions()">
+<span class="menu-icon">📖</span> INFORMACIÓN
+</button>
+
+<button onclick="openScores()">
+<span class="menu-icon">🏆</span> MEJORES PUNTAJES
+</button>
+
+<div class="settings">
+
+<div class="settingRow">
+
+    <div class="srow">
+      <span class="menu-icon">🎵</span>
+      <span class="slbl">MÚSICA</span>
+      <div class="vbar" id="vbar-music"></div>
+      <span class="stog" id="tog-music" onclick="toggleMusic()">ON</span>
+    </div>
+    <div class="srow">
+      <span class="menu-icon">🔊</span>
+      <span class="slbl">SONIDOS</span>
+      <div class="vbar" id="vbar-sfx"></div>
+      <span class="stog" id="tog-sfx" onclick="toggleSfx()">ON</span>
+    </div>
+    <div class="srow">
+        <div class="settingLabel">
+      <span class="menu-icon">📳</span>
+      <span class="slbl"><span class="stext">VIBRACIÓN</span></span></div>
+      <span class="stog" id="tog-vib" onclick="toggleVib()">ON</span>
+    </div>
+
+    </div>
+
+</div>
+
+<button class="exit" onclick="exitGame()">
+SALIR DEL JUEGO
+</button>
+
+</section>
+
+<!-- JUEGO -->
+
+<section id="game" class="screen">
+
+<div class="gameHud">
+
+    <div class="hudItem">
+
+        <span id="lives">
+
+        </span>
+
+    </div>
+
+    <div class="hudItem">
+
+        🌎
+
+        <span id="countryName">
+
+        </span>
+
+    </div>
+
+    <div class="hudItem">
+
+        ⏳
+
+        <span id="timer">
+
+        </span>
+
+    </div>
+
+    <div class="hudItem">
+
+        ⭐
+
+        <span id="score">
+
+        </span>
+
+    </div>
+
+    <button
+    id="pauseBtn"
+    onclick="pauseGame()">
+
+        ⏸
+
+    </button>
+
+</div>
+
+<canvas id="gameCanvas"
+width="480"
+height="720">
+</canvas>
+
+<div class="controls">
+
+<button
+ontouchstart="moveLeft()"
+ontouchend="stopMove()"
+ontouchcancel="stopMove()"
+onmousedown="moveLeft()"
+onmouseup="stopMove()"
+onmouseleave="stopMove()">
+◀
+</button>
+
+<button
+ontouchstart="moveRight()"
+ontouchend="stopMove()"
+ontouchcancel="stopMove()"
+onmousedown="moveRight()"
+onmouseup="stopMove()"
+onmouseleave="stopMove()">
+▶
+</button>
+
+</div>
+
+</section>
+
+<!-- PAUSA -->
+
+<section id="pauseScreen"
+class="overlay">
+
+<div class="panel">
+
+<h2>PAUSA</h2>
+
+<button onclick="resumeGame()">
+CONTINUAR
+</button>
+
+<button onclick="backToMenu()">
+MENÚ
+</button>
+
+</div>
+
+</section>
+
+<!-- NIVEL COMPLETADO -->
+
+<section id="levelComplete"
+class="screen">
+
+<h3>🏆<span class="gold">¡NIVEL COMPLETADO!</span>🏆</h3>
+
+<img id="flagImage">
+
+<h3 id="countryUnlock"></h3>
+
+<p id="countryCodeUnlock"></p>
+
+<p id="capitalUnlock"></p>
+
+<p id="continentUnlock"></p>
+
+<p id="countryProgress"></p>
+
+<button onclick="nextLevel()">
+CONTINUAR
+</button>
+
+</section>
+
+<!-- FIN DEL JUEGO -->
+
+<section id="gameOver"
+class="screen">
+
+<h2><span class="red">FIN DEL JUEGO</span></h2>
+
+<p id="finalScore"></p>
+
+<div class="nameInput">
+
+<input
+id="playerName"
+type="text"
+maxlength="3"
+placeholder="AAA">
+
+</div>
+
+<button onclick="saveScore()">
+GUARDAR
+</button>
+
+<button onclick="showMenu()">
+MENÚ
+</button>
+
+</section>
+
+<!-- LISTA BANDERAS -->
+
+<section id="flags"
+class="screen">
+
+<h3>🚩BANDERAS DEL MUNDO🌎</h3>
+
+<h3 id="flagProgress">
+0 / 195 desbloqueadas
+</h3>
+
+<div id="flagList" class="flag-list"></div>
+
+<button onclick="showMenu()">
+VOLVER
+</button>
+
+</section>
+
+<!-- DETALLE BANDERA -->
+
+<section id="flagDetail"
+class="screen">
+
+<img id="detailFlag">
+
+<h2 id="detailCountry"></h2>
+
+<p id="detailCode"></p>
+
+<p id="detailCapital"></p>
+
+<p id="detailContinent"></p>
+
+<button onclick="playCountryAnthem()">
+🎵 HIMNO
+</button>
+
+<button onclick="playSelectedCountry()">
+JUGAR NIVEL
+</button>
+
+<button onclick="backToFlags()">
+VOLVER
+</button>
+
+</section>
+
+<section id="instructions" class="screen">
+
+<h2><span class="menu-icon">📖</span> <span class="cyan">INFORMACIÓN</span></h2>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">🎯</span> <span class="red">OBJETIVO</span></h3>
+
+<p>
+Mueve la paleta, para hacer rebotar la pelota y destruir todos los ladrillos para completar el nivel y revelar la información del siguiente país.
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">📈</span> <span class="green">PROGRESO</span></h3>
+
+<p>
+Cada nivel representa un país diferente.
+Al completar un nivel se desbloquea la información del siguiente país:</p>
+<p> 🔴 Bandera</p>
+<p> 🟠 Nombre del país</p>
+<p> 🟡 Abreviatura oficial</p>
+<p> 🟢 Capital</p>
+<p> 🔵 Continente</p>
+<p> 🟣 Himno nacional</p>
+
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">🎮</span> <span class="purple">CONTROLES</span></h3>
+
+<p>
+
+◀ ▶ Mover la paleta
+
+⏸ Pausar partida
+
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">❤️</span> <span class="pink">VIDAS</span></h3>
+
+<p>
+
+Dispones de 3 vidas.
+
+Si la pelota cae abajo fuera del tablero perderás una vida.
+
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">🔧</span> <span class="blue">MECÁNICA</span></h3>
+
+<p>
+
+La velocidad aumenta progresivamente entre niveles,
+los ladrillos forman la bandera del país correspondiente,
+destruye todos los ladrillos para completar el nivel.
+
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">🖍</span> <span class="light-green"></span>PROPÓSITO EDUCATIVO</h3>
+
+<p>
+
+Aprender nombres de países, abreviaturas, banderas, capitales, continentes e himnos nacionales.
+
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">📝</span> <span class="gold">CRÉDITOS</span></h3>
+
+<p>
+
+Las banderas e himnos pertenecen a sus respectivos países.
+
+Este juego utiliza dichas representaciones con fines educativos.
+
+</p>
+
+<p>
+
+<span class="blue">Creador:</span> RUNICO
+
+<br>
+
+<span class="purple">Contacto:</span>
+runico.art3@gmail.com
+
+</p>
+</div>
+
+<div class="infoCard">
+
+<h3><span class="menu-icon">🕶</span> <span class="orange">PRIVACIDAD</span></h3>
+
+<p>
+
+El juego almacena únicamente datos locales en el dispositivo:
+
+avance, países desbloqueados y mejores puntajes.
+
+No se recopila información personal.
+
+</p>
+
+<p>
+
+Al utilizar esta aplicación aceptas estas condiciones.
+
+</p>
+</div>
+
+<button onclick="showMenu()">
+
+VOLVER
+
+</button>
+
+</section>
+
+<!-- PUNTAJES -->
+
+<section id="scores"
+class="screen">
+
+<h2>👑 <span class="gold">TOP 10</span> 🏆</h2>
+
+<div id="ranking"></div>
+
+<button onclick="showMenu()">
+VOLVER
+</button>
+
+</section>
+
+<script src="countries.js"></script>
+<script src="game.js"></script>
+
+</body>
+</html>
