@@ -231,6 +231,10 @@ justify-content:space-between;
 
 gap:16px;
 
+margin-bottom:20px;
+
+padding-bottom:env(safe-area-inset-bottom);
+
 }
 
 .controls button{
@@ -511,6 +515,16 @@ line-height:1.4;
 
 }
 
+#levelComplete h3{
+
+    width:100%;
+
+    text-align:center;
+
+    line-height:1.4;
+
+}
+
 #game{
 
 align-items:center;
@@ -617,11 +631,11 @@ height:60px;
     display:grid;
 
     grid-template-columns:
+
     70px
     1fr
-    70px
-    80px
-    60px;
+    85px
+    90px;
 
     align-items:center;
 
@@ -719,16 +733,6 @@ text-align:center;
 
 }
 
-.scoreLevel{
-
-font-size:11px;
-
-color:#FFD700;
-
-text-align:center;
-
-}
-
 .screen.active{
     display:flex;
     flex-direction:column;
@@ -807,9 +811,9 @@ text-align:center;
 
     flex-direction:column;
 
-    gap:8px;
+    gap:6px;
 
-    margin:14px 0;
+    margin:8px 0;
 
 }
 
@@ -948,7 +952,7 @@ cursor:default;
 
 }
 
-.srow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;width:100%;margin-bottom:8px}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 10px;background:var(--card);border:1px solid var(--border);border-radius:6px;width:100%;margin-bottom:8px}
 .sico{font-size:15px;width:22px;text-align:center;color:var(--white);flex-shrink:0}
 .slbl{align-content:left;align-items:left;font-size:12px;color:var(--white);min-width:90px;width:90px;flex-shrink:0;letter-spacing:1px}
 .stext{text-align:left;min-width:90px;}
@@ -1062,13 +1066,31 @@ scrollbar-color:#FFD700 #111318;
 
 .logo{
 
-font-size:22px;
+font-size:20px;
+
+margin-bottom:14px;
+
+}
+
+.screen{
+
+padding:10px;
+
+gap:10px;
 
 }
 
 button{
 
-font-size:11px;
+padding:12px;
+
+font-size:10px;
+
+}
+
+.menu-icon{
+
+font-size:20px;
 
 }
 
@@ -1104,11 +1126,17 @@ width:50px;
 
 }
 
+.controls{
+
+margin-bottom:30px;
+
+}
+
 .controls button{
 
-height:64px;
+height:58px;
 
-font-size:24px;
+font-size:22px;
 
 }
 
