@@ -1837,16 +1837,6 @@ function openScores(){
 
         }
 
-        const totalTime = item.time ?? 0;
-
-        const minutes =
-
-        Math.floor(totalTime / 60);
-
-        const seconds =
-
-        String(totalTime % 60).padStart(2,"0");
-
         ranking.innerHTML += `
 
 <div class="scoreRow">
@@ -1860,12 +1850,6 @@ ${medal} #${index+1}
 <div class="scoreName">
 
 ${item.name}
-
-</div>
-
-<div class="scoreTime">
-
-⏳ ${minutes}:${seconds}
 
 </div>
 
