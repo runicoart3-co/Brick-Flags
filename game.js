@@ -1847,10 +1847,6 @@ function openScores(){
 
         String(totalTime % 60).padStart(2,"0");
 
-        const level =
-
-        item.level ?? 1;
-
         ranking.innerHTML += `
 
 <div class="scoreRow">
@@ -1876,12 +1872,6 @@ ${item.name}
 <div class="scoreScore">
 
 ⭐ ${item.score}
-
-</div>
-
-<div class="scoreLevel">
-
-🌎 ${level}
 
 </div>
 
