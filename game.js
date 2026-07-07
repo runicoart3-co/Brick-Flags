@@ -1915,7 +1915,27 @@ window.onload = ()=>{
 
     updateSettingsUI();
 
+    document.querySelectorAll(".controls button").forEach(btn=>{
+
+    btn.addEventListener("selectstart",e=>{
+
+        e.preventDefault();
+
+    });
+
+});
+
 };
+
+document.querySelectorAll(".controls button").forEach(btn=>{
+
+    btn.addEventListener("contextmenu",e=>{
+
+        e.preventDefault();
+
+    });
+
+});
 
 window.addEventListener(
 
