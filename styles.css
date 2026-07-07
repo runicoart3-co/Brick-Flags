@@ -235,6 +235,10 @@ margin-top:6px;
 
 padding-bottom:calc(env(safe-area-inset-bottom) + 18px);
 
+user-select:none;
+
+    -webkit-user-select:none;
+
 }
 
 .controls button{
@@ -255,7 +259,7 @@ linear-gradient(
 
 #2d3447,
 
-#1b1d28
+#1b1d28,
 
 );
 
@@ -264,6 +268,19 @@ border:3px solid #3A3D52;
 box-shadow:
 
 0 4px 10px rgba(0,0,0,.4);
+
+user-select:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+
+    -webkit-touch-callout:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+touch-action:manipulation;
+
+cursor:pointer;
 
 }
 
@@ -274,6 +291,12 @@ transform:
 translateY(2px);
 
 box-shadow:none;
+
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none;
+-webkit-tap-highlight-color:transparent;
+touch-action:manipulation;
 
 }
 
@@ -529,6 +552,16 @@ line-height:1.4;
 
 align-items:center;
 
+touch-action:none;
+
+overscroll-behavior:none;
+
+user-select:none;
+
+-webkit-user-select:none;
+
+-webkit-touch-callout:none;
+
 }
 
 @media(max-width:600px){
@@ -592,6 +625,12 @@ height:54px;
 font-size:20px;
 
 width:47%;
+
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none;
+-webkit-tap-highlight-color:transparent;
+touch-action:manipulation;
 
 }
 
@@ -731,6 +770,10 @@ text-align:center;
 
 .infoCard{
 
+    width:100%;
+
+    max-width:480px;
+
     background:#1A1D26;
 
     border:2px solid #3A3D52;
@@ -740,6 +783,31 @@ text-align:center;
     padding:12px;
 
     margin-bottom:12px;
+
+    overflow-wrap:break-word;
+
+    word-break:break-word;
+
+    box-sizing:border-box;
+
+    overflow:visible;
+
+}
+
+.infoCard h3,
+.infoCard p{
+
+    width:100%;
+
+    max-width:100%;
+
+    overflow-wrap:anywhere;
+
+}
+
+.infoCard p{
+
+    line-height:1.6;
 
 }
 
@@ -1013,6 +1081,10 @@ max-height:60vh;
 
 margin-top:6px;
 
+user-select:none;
+
+    -webkit-user-select:none;
+
 }
 
 }
@@ -1139,6 +1211,10 @@ transform:scale(.95);
 
 transform-origin:bottom center;
 
+user-select:none;
+
+    -webkit-user-select:none;
+
 }
 
 .controls button{
@@ -1146,6 +1222,12 @@ transform-origin:bottom center;
 height:58px;
 
 font-size:22px;
+
+user-select:none;
+-webkit-user-select:none;
+-webkit-touch-callout:none;
+-webkit-tap-highlight-color:transparent;
+touch-action:manipulation;
 
 }
 
@@ -1158,6 +1240,16 @@ padding-top:8px;
 padding-bottom:calc(env(safe-area-inset-bottom) + 12px);
 
 gap:8px;
+
+touch-action:none;
+
+overscroll-behavior:none;
+
+user-select:none;
+
+-webkit-user-select:none;
+
+-webkit-touch-callout:none;
 
 }
 
@@ -1174,6 +1266,10 @@ max-height:75vh;
 .controls{
 
 max-width:520px;
+
+user-select:none;
+
+    -webkit-user-select:none;
 
 }
 
